@@ -93,29 +93,26 @@
     <string name="consultant_password_message">Please enter the consultant password:</string>
     <string name="consultant_incorrect_password_message">Incorrect Password</string>
     <string name="stories_not_found_title">No stories found!</string>
-    <string name="stories_not_found_body">No story templates found! The currently selected folder
+    <string name="stories_not_found_body">No story templates found! The currently selected Workspace folder
         for story templates does not contain usable templates.  Select the appropriate
-        \'&lt;font color=\"green\">&lt;b>SP Templates&lt;/b>&lt;/font>\' folder - normally found on the
-        &lt;font color=\"green\">&lt;b>SD card&lt;/b>&lt;/font>.</string>
+        \'&lt;font color=\"green\">&lt;b>SP Workspace&lt;/b>&lt;/font>\' folder - found on the
+        &lt;font color=\"green\">&lt;b>SD card or in internal memory&lt;/b>&lt;/font>.</string>
     <string name="stories_not_found_in_progress">There are no stories in progress.</string>
     <string name="stories_not_found_completed">There are no completed stories.</string>
     <!--  Issue #571, for welcome_screen_select_template_folder, replace template URL with a place holder. Move URL to workspace object -->
     <string name="welcome_screen_select_template_folder">
         Story Producer is different from typical apps.
-        You must first create a folder on your SD card (preferred) where the story template files must be downloaded by you.&lt;br>
-        &lt;font color=\"gray\">(If your SD card has already been prepared, skip down to \"Select \'SP Templates\' Folder\")&lt;/font>&lt;br>&lt;br>
-        To prepare your SD card&#8230;&lt;br>
-        \t\tGo &lt;a href="https://docs.google.com/document/d/1Jw73VlLmIyJgoFM3EOLyqGZyO50pOqXiSmsuLuq_u34/edit">HERE&lt;/a> for detailed instructions&lt;br>
-        \t\tOR follow these summary instructions:&lt;br>
+        First you must create a Workspace folder in your phone storage.  You will then download and move story templates and other assets into this folder.&lt;br>&lt;br>
+        DETAILED INSTRUCTIONS:&lt;br>
         1. Use Google Drive and download story templates from &lt;a href="URL_FOR_TEMPLATES_PLACE_HOLDER">HERE&lt;/a>&lt;br>
-        2. Use a Files app to create a folder on the SD card, and name it &lt;font color=\"green\">SP Templates&lt;/font>&lt;br>
-        3. With the Files app, Move or Copy story template(s) to the &lt;font color=\"green\">SP Templates&lt;/font> folder&lt;br>&lt;br>
-        After you have prepared the &lt;font color=\"green\">SP Templates&lt;/font> folder, proceed:
+        2. Use a Files app to create a Workspace folder in internal memory or on the SD card &lt;br>and name it &lt;font color=\"green\">1SP Workspace&lt;/font>&lt;br>
+        3. With the Files app, Move or Copy story template(s) to the &lt;font color=\"green\">1SP Workspace&lt;/font> folder&lt;br>&lt;br>
+        After you have prepared the &lt;font color=\"green\">1SP Workspace&lt;/font> folder, proceed:
     </string>
     <string name="workspace_selection_help">
         &lt;font color=\"gray\">Tell the Story Producer app where to find story templates.&lt;/font>&lt;br>&lt;br>
         The next screen will be a \'folder picker\'.&lt;br>
-        Navigate to the &lt;font color=\"green\">SP Templates&lt;/font> folder (on the &lt;font color=\"green\">SD Card&lt;/font>), then tap &lt;b>SELECT&lt;/b> at the bottom.
+        Navigate to the &lt;font color=\"green\">SP Workspace&lt;/font> folder (on the &lt;font color=\"green\">SD Card or in internal memory&lt;/font>), then tap &lt;b>SELECT&lt;/b> at the bottom.
     </string>
     <string name="welcome_screen_demo_error">Demo functionality coming soon!</string>
     <string-array name="orthography_list">
@@ -282,7 +279,7 @@
     <string name="menu_search">Search</string>
     <string name="update_registration">Update Registration</string>
     <string name="scanning_sp_templates">Please wait for SP to scan the templates</string>
-    <string name="update_workspace">Select \'SP Templates\' folder</string>
+    <string name="update_workspace">Select \'SP Workspace\' folder</string>
     <string name="cancelling">Cancelling &#8230;</string>
     <string name="copy_demo">Add demo to story list</string>
     <string name="more_templates">Download More Templates</string>
