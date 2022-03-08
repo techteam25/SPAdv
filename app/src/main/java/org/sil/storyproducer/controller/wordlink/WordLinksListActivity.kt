@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -19,9 +20,9 @@ import com.google.android.material.navigation.NavigationView
 import org.sil.storyproducer.R
 import org.sil.storyproducer.controller.MainActivity
 import org.sil.storyproducer.controller.RegistrationActivity
-import org.sil.storyproducer.model.WORD_LINKS_CLICKED_TERM
+import org.sil.storyproducer.model.*
 import org.sil.storyproducer.model.PHASE
-import org.sil.storyproducer.model.Workspace
+import org.sil.storyproducer.model.WORD_LINKS_CLICKED_TERM
 import org.sil.storyproducer.model.Workspace.termToWordLinkMap
 
 /**
@@ -68,11 +69,22 @@ class WordLinksListActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                 true
             }
             R.id.helpButton -> {
-                val alert = AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.help))
-                        .setMessage(R.string.wordlink_list_help)
-                        .create()
-                alert.show()
+                // DKH 3/7/2022 -
+                // Display help from the HTML file when the help button is clicked at the activity
+                // level.  Previously, a "NO Help Available" popup was displayed.
+                val wv = WebView(this)
+                val iStream = assets.open(Phase.getHelpDocFile(PhaseType.WORD_LINKS))
+                val text = iStream.reader().use {
+                    it.readText() }
+
+                wv.loadDataWithBaseURL(null,text,"text/html",null,null)
+                val dialog = android.app.AlertDialog.Builder(this)
+                        .setTitle("Word Links Help")
+                        .setView(wv)
+                        .setNegativeButton("Close") { dialog, _ ->
+                            dialog!!.dismiss()
+                        }
+                dialog.show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
