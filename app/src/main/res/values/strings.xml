@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Story Producer</string>
+    <string name="app_name">Story Producer Advance</string>
 
     <!-- General -->
     <string name="no">No</string>
@@ -69,7 +69,7 @@
     <string name="bypass_button_text">Skip Registration</string>
 
     <!-- Dialog strings for titles, messages, and buttons -->
-    <string name="welcome_to_story_producer">Welcome to Story Producer</string>
+    <string name="welcome_to_story_producer">Welcome to Story Producer Advance</string>
     <string name="use_internal_demo">Use internal demo</string>
     <string name="please_create_and_then_select_folder">Please create and then Select a new folder, needed for running the demo.</string>
     <string name="registration_exit_title">Exit Registration?</string>
@@ -101,7 +101,7 @@
     <string name="stories_not_found_completed">There are no completed stories.</string>
     <!--  Issue #571, for welcome_screen_select_template_folder, replace template URL with a place holder. Move URL to workspace object -->
     <string name="welcome_screen_select_template_folder">
-        Story Producer is different from typical apps.
+        Story Producer Advance is different from typical apps.
         First you must create a Workspace folder in your phone storage.  You will then download and move story templates and other assets into this folder.&lt;br>&lt;br>
         DETAILED INSTRUCTIONS:&lt;br>
         1. Use Google Drive and download story templates from &lt;a href="URL_FOR_TEMPLATES_PLACE_HOLDER">HERE&lt;/a>&lt;br>
@@ -110,7 +110,7 @@
         After you have prepared the &lt;font color=\"green\">1SP Workspace&lt;/font> folder, proceed:
     </string>
     <string name="workspace_selection_help">
-        &lt;font color=\"gray\">Tell the Story Producer app where to find story templates.&lt;/font>&lt;br>&lt;br>
+        &lt;font color=\"gray\">Tell the Story Producer Advance app where to find story templates.&lt;/font>&lt;br>&lt;br>
         The next screen will be a \'folder picker\'.&lt;br>
         Navigate to the &lt;font color=\"green\">SP Workspace&lt;/font> folder (on the &lt;font color=\"green\">SD Card or in internal memory&lt;/font>), then tap &lt;b>SELECT&lt;/b> at the bottom.
     </string>
@@ -251,7 +251,7 @@
     <string name="export_cancel_comment">Do not leave this screen until the video is complete.</string>
 
     <!-- ListView -->
-    <string name="title_activity_splash_screen">Story Producer</string>
+    <string name="title_activity_splash_screen">Story Producer Advance</string>
 
     <!-- Local Credits -->
     <string name="LC_obsolete_starting_text">Language:\nTranslated by:\nPhotography by:\nNarration / Voice Acting by:\nLocal Song by:</string>
@@ -298,10 +298,13 @@
     <!-- About -->
     <string name="about">About</string>
     <string name="license">License</string>
-    <string name="about_title">About Story Producer</string>
+    <string name="about_title">About StoryProducerAdv (SPadv)</string>
     <string name="app_version">app version: %1$s</string>
     <string name="prefer_bloom_templates">prefer .bloom templates</string>
-    <string name="license_body">This software is jointly copyrighted © 2020, SIL International and
+    <string name="license_body">This StoryProducerAdv (Story Producer Advance) software is jointly
+                                copyrighted © 2022, Robin Rempel and The Word for the World (TWFTW).
+                                Adapted from and built upon original, Story Producer (version 3.0.6)
+                                jointly copyrighted © 2020, SIL International and
                                 Cedarville University. It is released under the following license:
                                 Permission is hereby granted, free of charge, to any person lawfully
                                 obtaining a copy of this software and associated documentation files
