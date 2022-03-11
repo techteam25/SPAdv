@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Story Producer Advance</string>
+    <string name="app_name">StoryProducerAdv</string>
 
     <!-- General -->
     <string name="no">No</string>
@@ -69,7 +69,7 @@
     <string name="bypass_button_text">Skip Registration</string>
 
     <!-- Dialog strings for titles, messages, and buttons -->
-    <string name="welcome_to_story_producer">Welcome to Story Producer Advance</string>
+    <string name="welcome_to_story_producer">Welcome to StoryProducerAdv</string>
     <string name="use_internal_demo">Use internal demo</string>
     <string name="please_create_and_then_select_folder">Please create and then Select a new folder, needed for running the demo.</string>
     <string name="registration_exit_title">Exit Registration?</string>
@@ -83,6 +83,7 @@
     <string name="registration_error_title">Submission Error</string>
     <string name="registration_error_message">Please provide an database email address</string>
     <string name="registration_saved_successfully">Registration information saved!</string>
+    <string name="registration_SPadv_email">SPapp.training@gmail.com</string>
     <string name="registration_robin_rempel_email">SPapp_info@sil.org</string>
     <string name="rename_title">Choose a new name</string><!-- Default instructions on how to enter data -->
     <!-- For Word links, give user more instruction on how to enter the data -->
@@ -101,7 +102,7 @@
     <string name="stories_not_found_completed">There are no completed stories.</string>
     <!--  Issue #571, for welcome_screen_select_template_folder, replace template URL with a place holder. Move URL to workspace object -->
     <string name="welcome_screen_select_template_folder">
-        Story Producer Advance is different from typical apps.
+        StoryProducerAdv is different from typical apps.
         First you must create a Workspace folder in your phone storage.  You will then download and move story templates and other assets into this folder.&lt;br>&lt;br>
         DETAILED INSTRUCTIONS:&lt;br>
         1. Use Google Drive and download story templates from &lt;a href="URL_FOR_TEMPLATES_PLACE_HOLDER">HERE&lt;/a>&lt;br>
@@ -110,7 +111,7 @@
         After you have prepared the &lt;font color=\"green\">1SP Workspace&lt;/font> folder, proceed:
     </string>
     <string name="workspace_selection_help">
-        &lt;font color=\"gray\">Tell the Story Producer Advance app where to find story templates.&lt;/font>&lt;br>&lt;br>
+        &lt;font color=\"gray\">Tell the StoryProducerAdv app where to find story templates.&lt;/font>&lt;br>&lt;br>
         The next screen will be a \'folder picker\'.&lt;br>
         Navigate to the &lt;font color=\"green\">SP Workspace&lt;/font> folder (on the &lt;font color=\"green\">SD Card or in internal memory&lt;/font>), then tap &lt;b>SELECT&lt;/b> at the bottom.
     </string>
@@ -251,7 +252,7 @@
     <string name="export_cancel_comment">Do not leave this screen until the video is complete.</string>
 
     <!-- ListView -->
-    <string name="title_activity_splash_screen">Story Producer Advance</string>
+    <string name="title_activity_splash_screen">StoryProducer Advance</string>
 
     <!-- Local Credits -->
     <string name="LC_obsolete_starting_text">Language:\nTranslated by:\nPhotography by:\nNarration / Voice Acting by:\nLocal Song by:</string>
@@ -263,7 +264,7 @@
     <string name="local_credits_unchanged">Local Credits Unchanged!</string>
 
     <!-- Local Song -->
-    <string name="LS_prompt">Make a song for the Bible story!  You can choose to include it or not include it when you make a video.</string>
+    <string name="LS_prompt">Compose and record a song for the Bible story!  You can choose to include it or not include it when you make a video.</string>
 
     <string name="LWC_PLAYBACK">LWC Playback</string>
     <string name="DRAFT_RECORDING">Draft Recording</string>
