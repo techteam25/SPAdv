@@ -312,15 +312,19 @@ class FinalizeActivity : PhaseBaseActivity() {
             mCheckboxText.isChecked = false
         }
 
-
+        // 4/01/2022 - DKH, Issue 0R11: Allow text with movement during video creation
+        // With the implementation of SP456 (Add grey rectangle to backdrop text "sub titles"),
+        // the text "sub titles" are now readable during picture movement.  Remove the restriction
+        // that would not allow text "sub titles" to be displayed during picture movement.
+        /*
         if (mCheckboxText.isChecked && mCheckboxKBFX.isChecked) {
             if(currentCheckbox == mCheckboxText){
-                mCheckboxKBFX.isChecked = false
+                 mCheckboxKBFX.isChecked = false
             }else{
-                mCheckboxText.isChecked = false
+                 mCheckboxText.isChecked = false
             }
         }
-
+        */
         // Check if there is a song to play
         if (mCheckboxSong.isChecked && (Workspace.getSongFilename() == "")){
             // you have to have a song to include it!
