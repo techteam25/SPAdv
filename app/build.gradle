@@ -60,7 +60,10 @@ android {
             }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "false")
+            // dkh 4/4/2022 - OR12 disable firebase analytics for SPadvance because the SPadvance
+            // release number shows up in the firebase website (get mixed SPadvance and SP crashes
+            // showing up
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
         }
         // dkh - 5/3/21  - These changes came  from Chris Hubbard (pull request 568)
         // Updated applicationIdSuffix to allow debug versions of app crashes to be captured separate from
@@ -73,7 +76,10 @@ android {
         debug {
             versionNameSuffix ".debug"
             applicationIdSuffix ".debug"
-            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "false")
+            // dkh 4/4/2022 - OR12 disable firebase analytics for SPadvance because the SPadvance
+            // release number shows up in the firebase website (get mixed SPadvance and SP crashes
+            // showing up
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
         }
         continuous {
             initWith release
