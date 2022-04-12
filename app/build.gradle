@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 24
-        versionName '1.0'
+        versionName '1.0.1'
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -84,6 +84,10 @@ android {
         continuous {
             initWith release
             applicationIdSuffix ".ci"
+            // dkh 4/4/2022 - OR12 disable firebase analytics for SPadvance because the SPadvance
+            // release number shows up in the firebase website (get mixed SPadvance and SP crashes
+            // showing up
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
         }
     }
     productFlavors {
