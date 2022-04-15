@@ -178,6 +178,18 @@ object Workspace {
         var wordLinksDir = workdocfile.findFile(WORD_LINKS_DIR)
         var csvFileName : String? = null  // default is no csv file, later on, create one if none found
 
+        // DKH - 04/13/2022 Issue 625 WordLinks list is incorrectly copied when you select a new SP Templates folder
+        // Before we load a new Word Links file, clear any previous Word Links data from memory.
+        if(termToWordLinkMap.isNotEmpty()){
+            // If the termToWorkLinkMap is not empty, it means the user has selected a new
+            // workspace that will contain a different set of word links terms, so,
+            // create an empty link search tree for the newly selected workspace
+            WLSTree = WordLinkSearchTree()
+            // Clear out all term data
+            termToWordLinkMap.clear()
+            termFormToTermMap.clear()
+        }
+        
         if (wordLinksDir == null) { // check to see if word links directory exists
             // DKH - 11/19/2021 Issue #611 Create Word Links CSV directory if it does not exist
             wordLinksDir = workdocfile.createDirectory(WORD_LINKS_DIR)
