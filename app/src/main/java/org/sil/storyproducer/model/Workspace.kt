@@ -48,7 +48,8 @@ object Workspace {
     // ( WelcomeDialogActivity.kt).  We will have different strings.xml file for each
     // language and by having the URL defined here, we never have to update the different strings.xml
     // files.
-    const val URL_FOR_TEMPLATES = "http://spapp.website"
+    // DKH - 5/3/2022 Issue OR14 - Update to use secure SPadv website
+    const val URL_FOR_TEMPLATES = "https://sites.google.com/view/spadv-website"
     // These are the place holder strings in the "Welcome Screen" html.  Before displaying the
     // "Welcome Screen", replace this place holder strings with the URL_FOR_TEMPLATES
     const val URL_FOR_TEMPLATES_PLACE_HOLDER = "URL_FOR_TEMPLATES_PLACE_HOLDER"
