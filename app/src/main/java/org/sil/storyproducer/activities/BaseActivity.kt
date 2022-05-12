@@ -178,7 +178,6 @@ open class BaseActivity : AppCompatActivity(), BaseActivityView {
                 .setPositiveButton(getString(R.string.ok), null)
                 .create()
                 .show()
-        dfjsdlkfjsdklf
     }
 
     private fun buildAboutDialogView(): View {
