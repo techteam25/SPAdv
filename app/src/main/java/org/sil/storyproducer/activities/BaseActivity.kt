@@ -32,6 +32,7 @@ open class BaseActivity : AppCompatActivity(), BaseActivityView {
     private var cancellingReadingTemplatesDialog: AlertDialog? = null
     protected val subscriptions = CompositeDisposable()
 
+    //Code essential to StoryProducer's startup - app won't start without it
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(FLAG_KEEP_SCREEN_ON)
