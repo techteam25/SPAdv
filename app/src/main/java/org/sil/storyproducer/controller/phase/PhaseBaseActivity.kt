@@ -48,6 +48,8 @@ abstract class PhaseBaseActivity : BaseActivity(), AdapterView.OnItemSelectedLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         super.setContentView(R.layout.phase_frame)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
         slideService = SlideService(this)
 
         val mActionBarToolbar = findViewById<Toolbar>(R.id.toolbar)

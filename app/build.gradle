@@ -60,6 +60,9 @@ android {
             }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "ROCC_URL_PREFIX", ROCC_URL_PREFIX
+            buildConfigField "String", "ROCC_WEBSOCKETS_PREFIX", ROCC_WEBSOCKETS_PREFIX
+            buildConfigField "Boolean", "ENABLE_IN_APP_ROCC_URL_SETTING", "false"
             // dkh 4/4/2022 - OR12 disable firebase analytics for SPadvance because the SPadvance
             // release number shows up in the firebase website (get mixed SPadvance and SP crashes
             // showing up
@@ -76,6 +79,9 @@ android {
         debug {
             versionNameSuffix ".debug"
             applicationIdSuffix ".debug"
+            buildConfigField "String", "ROCC_URL_PREFIX", ROCC_URL_PREFIX
+            buildConfigField "String", "ROCC_WEBSOCKETS_PREFIX", ROCC_WEBSOCKETS_PREFIX
+            buildConfigField "Boolean", "ENABLE_IN_APP_ROCC_URL_SETTING", "true"
             // dkh 4/4/2022 - OR12 disable firebase analytics for SPadvance because the SPadvance
             // release number shows up in the firebase website (get mixed SPadvance and SP crashes
             // showing up
@@ -88,6 +94,13 @@ android {
             // release number shows up in the firebase website (get mixed SPadvance and SP crashes
             // showing up
             resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
+        }
+
+        clientDebug {
+            initWith debug
+            buildConfigField "Boolean", "ENABLE_IN_APP_ROCC_URL_SETTING", "false"
+            resValue "bool", "enable_in_app_rocc_url_setting", "false"
+
         }
     }
     productFlavors {
@@ -144,6 +157,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.webkit:webkit:1.1.0'
     implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'org.java-websocket:Java-WebSocket:1.4.1'
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'net.lingala.zip4j:zip4j:2.3.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'

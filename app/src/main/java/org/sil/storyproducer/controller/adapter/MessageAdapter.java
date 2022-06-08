@@ -12,6 +12,7 @@ import org.sil.storyproducer.R;
 import org.sil.storyproducer.model.messaging.Message;
 
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ import java.util.List;
 public class MessageAdapter extends BaseAdapter {
 
     List<Message> messages = new ArrayList<>();
+    List<Message> queuedMessages = new ArrayList<>();
     Context con;
     int lastID = -1;
 
@@ -37,6 +39,15 @@ public class MessageAdapter extends BaseAdapter {
         messages = m;
     }
 
+    public void addQueuedMessage(Message m) {
+        queuedMessages.add(m);
+        notifyDataSetChanged();
+    }
+
+    public void setQueuedMessages(ArrayDeque<Message> qm) {
+        queuedMessages = new ArrayList(qm);
+    }
+
     public List<Message> getMessageHistory(){
         return this.messages;
     }
@@ -50,13 +61,23 @@ public class MessageAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount(){
-        return messages.size();
+    public int getCount() {
+        if (queuedMessages.size() == 0) {
+            return messages.size();
+        } else {
+            return messages.size() + queuedMessages.size() + 1;
+        }
     }
 
     @Override
-    public Object getItem(int i){
-        return messages.get(i);
+    public Object getItem(int i) {
+        if (i < messages.size()) {
+            return messages.get(i);
+        } else if (i == messages.size()) {
+            return null;
+        } else {
+            return queuedMessages.get(i - messages.size() - 1);
+        }
     }
 
     @Override
@@ -68,24 +89,33 @@ public class MessageAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         MessageViewHolder holder = new MessageViewHolder();
-        LayoutInflater messageInflater = (LayoutInflater) con.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        Message message = messages.get(i);
+        LayoutInflater inflater = (LayoutInflater) con.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
-        // from phone; on right
-        if (message.isFromPhone()) {
-            convertView = messageInflater.inflate(R.layout.phone_message_layout, null);
+        Message message;
+        if (i < messages.size()) {
+            message = messages.get(i);
+            if (message.isTranscript()) {
+                convertView = inflater.inflate(R.layout.phone_back_translation_message_layout, null);
+            } else if (message.isConsultant()) {
+                convertView = inflater.inflate(R.layout.rocc_message_layout, null);
+            } else {
+                convertView = inflater.inflate(R.layout.phone_message_layout, null);
+            }
+            holder.messageBody = convertView.findViewById(R.id.message_body);
+            convertView.setTag(holder);
+            holder.messageBody.setText(message.getMessage());
+        } else if (i == messages.size()) {
+            convertView = inflater.inflate(R.layout.unread_messages_divider_layout, null);
+        } else {
+            message = queuedMessages.get(i - messages.size() - 1);
+            convertView = inflater.inflate(R.layout.phone_queued_message_layout, null);
+            holder.messageBody = convertView.findViewById(R.id.message_body);
+            convertView.setTag(holder);
+            holder.messageBody.setText(message.getMessage());
         }
-        // from rocc; on left
-        else {
-            convertView = messageInflater.inflate(R.layout.rocc_message_layout, null);
-        }
-        holder.messageBody = convertView.findViewById(R.id.message_body);
-        convertView.setTag(holder);
-        holder.messageBody.setText(message.getMessage());
+
         return convertView;
     }
-
-
 }
 
 class MessageViewHolder {

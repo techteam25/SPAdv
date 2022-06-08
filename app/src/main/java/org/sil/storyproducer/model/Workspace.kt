@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.os.ParcelFileDescriptor
 import android.provider.Settings.Secure
 import android.util.Log
@@ -14,7 +15,22 @@ import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.FirebaseAnalytics
+import java.sql.Timestamp
+import java.time.Instant
+import java.util.TimeZone
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import org.json.JSONObject
+import org.sil.storyproducer.BuildConfig
 import org.sil.storyproducer.R
+import org.sil.storyproducer.model.messaging.Message
+import org.sil.storyproducer.model.messaging.Approval
+import org.sil.storyproducer.tools.file.deleteWorkspaceFile
+import java.net.URI
+import java.net.URISyntaxException
 import org.sil.storyproducer.tools.file.*
 import java.io.File
 import java.io.IOException
@@ -138,6 +154,39 @@ object Workspace {
         if(activeStory.title == "") return null
         return activeStory.slides[activeSlideNum]
     }
+
+    val messages = ArrayList<Message>()
+    val queuedMessages = ArrayDeque<Message>()
+    val messageChannel = BroadcastChannel<Message>(30)
+    val approvalChannel = BroadcastChannel<Approval>(30)
+    val toSendMessageChannel = Channel<Message>(100)
+    var messageClient: MessageWebSocketClient? = null
+    var lastReceivedTimeSent = Timestamp(0)
+
+    fun getRoccUrlPrefix(context: Context): String {
+        return if (BuildConfig.ENABLE_IN_APP_ROCC_URL_SETTING) {
+            PreferenceManager.getDefaultSharedPreferences(context).getString("ROCC_URL_PREFIX", BuildConfig.ROCC_URL_PREFIX)
+                ?: BuildConfig.ROCC_URL_PREFIX
+        } else {
+            BuildConfig.ROCC_URL_PREFIX
+        }
+    }
+
+
+    fun getRoccWebSocketsUrl(context: Context): String {
+        println("I am at point 1")
+        var baseUrl = if (BuildConfig.ENABLE_IN_APP_ROCC_URL_SETTING) {
+            /* JD Comment: When the websocket opens, it goes through this part of the if statement*/
+            PreferenceManager.getDefaultSharedPreferences(context).getString("WEBSOCKETS_URL", BuildConfig.ROCC_WEBSOCKETS_PREFIX)
+                ?: BuildConfig.ROCC_WEBSOCKETS_PREFIX
+        } else {
+            BuildConfig.ROCC_WEBSOCKETS_PREFIX
+        }
+        val projectId = Secure.getString(context.contentResolver, Secure.ANDROID_ID)
+        Log.e("@pwhite", "Getting websocket URL: $baseUrl/phone/$projectId")
+        return "$baseUrl/phone/$projectId"
+    }
+
 
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 

@@ -3,9 +3,11 @@ package org.sil.storyproducer.controller.remote;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.fragment.app.Fragment;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +46,9 @@ import org.sil.storyproducer.tools.media.AudioPlayer;
 
 import java.io.File;
 import java.lang.reflect.Type;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +94,7 @@ public class RemoteCheckFrag extends Fragment {
         //FIXME
         // storyName = StoryState.getStoryName();
         setHasOptionsMenu(true);
+        System.out.println("I am using the remote check frag");
         successToast = Toast.makeText(getActivity().getApplicationContext(), R.string.remote_check_msg_sent, Toast.LENGTH_SHORT);
         noConnection = Toast.makeText(getActivity().getApplicationContext(), R.string.remote_check_msg_no_connection, Toast.LENGTH_SHORT);
         unknownError = Toast.makeText(getActivity().getApplicationContext(),R.string.remote_check_msg_failed, Toast.LENGTH_SHORT);
@@ -346,6 +352,7 @@ public class RemoteCheckFrag extends Fragment {
 
         StringRequest req = new StringRequest(Request.Method.POST, getString(R.string.url_get_messages), new Response.Listener<String>() {
 
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(String response) {
                 //returns messages array IsTranslator: boolean + Message: String
@@ -380,8 +387,10 @@ public class RemoteCheckFrag extends Fragment {
                             JSONObject currMsg = msgs.getJSONObject(j);
                             int num = currMsg.getInt("IsTranslator");
                             boolean isFromTranslator = (num == 1);
-                            String msg = currMsg.getString("Message");
-                            Message m = new Message(isFromTranslator, msg);
+                            int storyID = currMsg.getInt("storyId");
+                            String msg = currMsg.getString("message");
+                            Date mesgTime = Timestamp.from(Instant.now());
+                            Message m = new Message(slideNumber, storyID, !isFromTranslator, isFromTranslator, mesgTime, msg);
                             msgAdapter.add(m);
                         } catch (JSONException e) {
                             e.printStackTrace();

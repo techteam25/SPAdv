@@ -184,6 +184,7 @@ public class WholeStoryBackTranslationActivity extends PhaseBaseActivity {
     public void onResume() {
             super.onResume();
             //recordingToolbar.hideFloatingActionButton();
+
     }
 
     @Override
