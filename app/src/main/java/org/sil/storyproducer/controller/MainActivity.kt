@@ -187,6 +187,7 @@ class MainActivity : BaseActivity(), Serializable {
     }
 
     private fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        menuItem.isChecked = true
         mDrawerLayout?.closeDrawers()
 
         when (menuItem.itemId) {
@@ -224,6 +225,11 @@ class MainActivity : BaseActivity(), Serializable {
             }
             R.id.nav_about -> {
                 showAboutDialog()
+            }
+            R.id.nav_clear_all_messages -> {
+            }
+            R.id.nav_forget_remote_story_id -> {
+                //Workspace.activeStory.remoteId = null
             }
         }
 

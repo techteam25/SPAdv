@@ -2,6 +2,9 @@ package org.sil.storyproducer.controller.pager;
 
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
+import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import org.sil.storyproducer.R;
 import org.sil.storyproducer.controller.phase.PhaseBaseActivity;

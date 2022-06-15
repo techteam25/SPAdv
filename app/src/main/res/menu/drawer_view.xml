@@ -22,5 +22,11 @@
         <item
             android:id="@+id/nav_about"
             android:title="@string/about" />
+        <item
+            android:id="@+id/nav_clear_all_messages"
+            android:title="Clear All Messages" />
+        <item
+            android:id="@+id/nav_forget_remote_story_id"
+            android:title="Forget Remote Story ID" />
     </group>
 </menu>
